@@ -22,7 +22,6 @@ def dfs2(idx, sum): #answer
 
 n, s = map(int, sys.stdin.readline().split())
 l = list(map(int, sys.stdin.readline().split()))
-cnt = 0
 combi = [0 for i in range(n)]
 dfs(0, 0)
 print(cnt)
