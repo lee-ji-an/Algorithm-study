@@ -1,3 +1,8 @@
+#Date : 2022.07.23
+#Update : 2022.07.23
+#Classification : Brute-Force / recursion
+#Author : leejian
+
 import sys
 input = sys.stdin.readline
 n = int(input())
