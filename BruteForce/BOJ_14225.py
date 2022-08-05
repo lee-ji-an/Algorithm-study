@@ -11,7 +11,7 @@ def dfs(idx, sum):
     if idx >= n:
         return
     sum = sum + s[idx]
-    sum_list.append(sum)
+    sum_list.append(sum)  # visited 리스트 추가해서 확인 가능
     # if sum == min + 1:
     #     min = sum
     dfs(idx+1, sum-s[idx])

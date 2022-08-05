@@ -9,20 +9,16 @@ import sys
 import copy
 def dfs(num, start, b):
     global case
-    if num == n:
+    if num == n:       # queen의 갯수가 n 이면 case 1 증가
         case = case + 1
         return
-    i = start
-    # for i in range(start, n):
-    for j  in range(n):
-        if b[i][j] == 0:
+    for j in range(n):
+        if b[start][j] == 0:
             b2 = copy.deepcopy(b)
-            board2_set(i, j, 1, b2)
+            board2_set(start, j, 1, b2)
             dfs(num + 1, start+1, b2)
 
 def board2_set(row, col, val, board2):
-    # print(board2, "*")
-    # board2[row][col] = val
     for k in range(0, n):
         board2[k][col] = val
         board2[row][k] = val

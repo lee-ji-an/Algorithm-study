@@ -25,7 +25,7 @@ def dfs(idx, row, col, sum):
             move_c = col + dir_c[i]
             if 0 <= move_r < n and 0 <= move_c < m and not visited[move_r][move_c]:
                 visited[move_r][move_c] = 1
-                if idx == 2:
+                if idx == 2:    # ㅗ ㅜ ㅓ ㅏ 모양을 탐색하기 위한 구문
                     dfs(idx + 1, row, col, sum + num_list[move_r][move_c])
                 dfs(idx + 1, move_r, move_c, sum + num_list[move_r][move_c])
                 visited[move_r][move_c] = 0
