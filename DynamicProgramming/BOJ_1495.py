@@ -1,3 +1,8 @@
+#Date : 2022.08.17
+#Update : 2022.08.17
+#Classification : Dynamic Prigramming
+#Author : leejian
+
 import sys
 
 input = sys.stdin.readline
