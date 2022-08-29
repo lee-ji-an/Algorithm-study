@@ -15,19 +15,17 @@ cnt = 0
 stack = [0] * (n*n)
 dirr = [-1, 1, 0, 0]
 dirc = [0, 0, -1, 1]
-def dfs(row, col):
+def bfs(row, col):
     queue = deque()
-    loc = [[0]*n for _ in range(n)]
     s = 0
     queue.append([row, col])
     visited[row][col] = 1
-    loc[row][col] = 1
     s += A[row][col]
     pos = [(row, col)]
     while queue:
         v = queue.popleft()
         row, col = v[0], v[1]
-        for x in range(4):
+        for x in range(4):     #상하좌우 탐색
             mr = row + dirr[x]
             mc = col + dirc[x]
             if 0 <= mr < n and 0 <= mc < n and not visited[mr][mc]:
@@ -38,31 +36,24 @@ def dfs(row, col):
                     s += A[mr][mc]
     if len(pos) > 1:
         avg = int(s/len(pos))
-        for x in range(len(pos)):
+        for x in range(len(pos)):   #2차원 배열에 location 0/1 표시하는 것보다 좌표 저장해서 탐색하는 게 더 빠름
             A[pos[x][0]][pos[x][1]] = avg
         return 1
-    print(pos)
-    return 0
-
-def check(row, col):
-    for x in range(4):
-        mr, mc = row + dirr[x], col + dirc[x]
-        if 0 <= mr < n and 0 <= mc < n:
-            if l <= abs(A[mr][mc]-A[row][col]) <= r:
-                return 1
     return 0
 
 flag = True
-while flag:
+while True:
     visited = [[0] * n for _ in range(n)]
     flag = False
     for i in range(n):
         for j in range(n):
             if visited[i][j] == 0:
-                if dfs(i, j):
+                if bfs(i, j):
                     flag = True
-    cnt += 1
-
-print(cnt-1)
+    if flag:
+        cnt += 1
+    else:
+        break
+print(cnt)
 
 
