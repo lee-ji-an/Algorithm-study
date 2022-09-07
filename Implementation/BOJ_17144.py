@@ -1,6 +1,6 @@
 #Date : 2022.09.05
 #Update : 2022.09.05
-#Classification : Implementation (pypy3 - o, python3 - x)
+#Classification : Implementation (pypy3 - o, python3 - x) 빠르게 해결
 #Author : leejian
 
 import sys
