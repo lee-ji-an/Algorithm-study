@@ -1,3 +1,8 @@
+#Date : 2022.09.07
+#Update : 2022.09.11
+#Classification : Implementation
+#Author : leejian
+
 import sys
 input = sys.stdin.readline
 man = -1
@@ -17,26 +22,9 @@ def move():
     for r in range(R):
         for c in range(C):
             if sea[r][c]:
-                s, d, z = sea[r][c][0], sea[r][c][1], sea[r][c][2]
-                mr = r
-                mc = c
-                for x in range(s):
-                    mr += dr[d]
-                    mc += dc[d]
-                    if 0 <= mr < R and 0 <= mc < C:
-                        continue
-                    else:
-                        if d == 1:
-                            d = 2
-                        elif d == 2:
-                            d = 1
-                        elif d == 3:
-                            d = 4
-                        else:
-                            d = 3
-                        mr = mr + dr[d]*2
-                        mc = mc + dc[d]*2
-                sub_sea[mr][mc].append((s, d, z))
+                speed, dir, z = sea[r][c][0], sea[r][c][1], sea[r][c][2]
+                mr, mc, dir = get_loc(r, c, speed, dir)
+                sub_sea[mr][mc].append((speed, dir, z))
     for r in range(R):
         for c in range(C):
             if len(sub_sea[r][c]) > 1:
@@ -50,6 +38,25 @@ def move():
             else:
                 sea[r][c] = 0
 
+def get_loc(row, col, s, d):
+    if d == 1 or d == 2:
+        if row == 0 or row == R-1 or d == 2:
+            new_r = (row + s)%(2*R - 2)
+        elif d == 1:
+            new_r = (2 * R - row - 2 + s)%(2*R - 2)
+        if new_r <= R-2:
+            return new_r, col, 2
+        else:
+            return 2*R-2-new_r, col, 1
+    if d == 3 or d == 4:
+        if col == 0 or col == C-1 or d == 3:
+            new_c = (col + s)%(2*C - 2)
+        elif d == 4:
+            new_c = (2*C-col-2+s)%(2*C - 2)
+        if new_c <= C-2:
+            return row, new_c, 3
+        else:
+            return row, 2*C-2-new_c, 4
 
 
 R, C, M = map(int, input().split())
@@ -60,5 +67,6 @@ for i in range(M):
 for i in range(C):
     cnt = catch(i, cnt)
     move()
+    # print(sea)
 
 print(cnt)
