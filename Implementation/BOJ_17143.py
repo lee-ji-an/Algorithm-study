@@ -1,6 +1,6 @@
 #Date : 2022.09.07
 #Update : 2022.09.11
-#Classification : Implementation
+#Classification : Implementation(python3 - o)
 #Author : leejian
 
 import sys
