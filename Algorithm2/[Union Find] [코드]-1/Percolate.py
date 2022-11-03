@@ -45,13 +45,13 @@ def simulate(n, t):
                 size[n*n+1] += 1
             elif 0 <= num < n:
                 size[n*n] += 1
-            if num-n >= 0 and visited[num-n]:
+            if num-n >= 0 and visited[num-n]:   #위
                 union(num, num-n)
-            if num+n < n*n and visited[num+n]:
+            if num+n < n*n and visited[num+n]:  #아래
                 union(num, num+n)
-            if num % n != n-1 and visited[num+1]:
+            if num % n != n-1 and visited[num+1]:   #오른쪽
                 union(num, num+1)
-            if num % n != 0 and visited[num-1]:
+            if num % n != 0 and visited[num-1]:     #왼쪽
                 union(num, num-1)
             if connected(n*n, n*n+1):
                 break
